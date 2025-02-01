@@ -1,0 +1,3 @@
+<template>
+  Guild Screen
+</template>
