@@ -1,0 +1,60 @@
+<template>
+  <div class="user-profile" v-if="user.email">
+    <img :src="user.picture" alt="Google Profile Image" />
+    <p>{{ user.email }}</p>
+  </div>
+  <div v-else>
+    <p>No user is logged in.</p>
+  </div>
+</template>
+
+<script>
+  import { jwtDecode } from "jwt-decode";
+  
+  export default {
+    name: "GoogleProfile",
+    props: {
+      // The Google JWT (ID token) passed from the parent component after login
+      token: {
+        type: String,
+        required: true,
+      },
+    },
+    computed: {
+      user() {
+        try {
+          return jwtDecode(this.token);
+        } catch (error) {
+          console.error("Error decoding token:", error);
+          return {};
+        }
+      },
+    },
+  };
+  </script>
+  
+  <style scoped>
+  .user-profile {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 300px;
+    margin: 1rem auto;
+  }
+  
+  .user-profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+  
+  .user-profile p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+  }
+  </style>
+  

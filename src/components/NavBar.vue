@@ -20,6 +20,10 @@
         <font-awesome-icon icon="sitemap" />
         <span>Skill Tree</span>
       </router-link>
+      <router-link to="/enter" class="nav-item">
+        <font-awesome-icon icon="right-to-bracket" />
+        <span>Enter</span>
+      </router-link>
     </nav>
   </template>
   

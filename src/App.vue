@@ -1,17 +1,23 @@
 <template>
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+  <GoogleProfile :token="googleAuthToken"/>
   <router-view></router-view>
   <NavBar/>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
+import GoogleProfile from './components/GoogleProfile.vue'
 import NavBar from './components/NavBar.vue'
 
 export default {
   name: 'App',
   components: {
+    GoogleProfile,
     NavBar
+  },
+  computed: {
+    googleAuthToken() {
+      return document.cookie;
+    }
   }
 }
 </script>
