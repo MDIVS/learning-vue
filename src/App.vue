@@ -7,6 +7,7 @@
 <script>
 import GoogleProfile from './components/GoogleProfile.vue'
 import NavBar from './components/NavBar.vue'
+import { Cookie } from './helpers/cookie';
 
 export default {
   name: 'App',
@@ -16,7 +17,7 @@ export default {
   },
   computed: {
     googleAuthToken() {
-      return document.cookie;
+      return Cookie.get("googleAuth");
     }
   }
 }

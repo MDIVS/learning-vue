@@ -10,21 +10,27 @@
 
 <script>
   import { jwtDecode } from "jwt-decode";
+  import { Cookie } from "./../helpers/cookie";
   
   export default {
     name: "GoogleProfile",
     props: {
       // The Google JWT (ID token) passed from the parent component after login
       token: {
-        type: String,
-        required: true,
+        type: String
       },
     },
     computed: {
       user() {
         try {
-          return jwtDecode(this.token);
+          return this.token===null ? {} : jwtDecode(this.token);
         } catch (error) {
+          if (error.message === "Invalid token specified: missing part #2") {
+            Cookie.remove("googleAuth");
+            console.log("Expired Google oAuth cookie section.");
+            return {};
+          }
+          console.log(error.message);
           console.error("Error decoding token:", error);
           return {};
         }

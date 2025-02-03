@@ -11,3 +11,9 @@ const app = createApp(App);
 app.use(router);
 app.component('font-awesome-icon', FontAwesomeIcon);
 app.mount('#app');
+
+import {Cookie} from "./helpers/cookie";
+if (process.env.VUE_APP_ENV === 'development') {
+    // this allows debugging through console on development environments
+    window.Cookie = Cookie;
+}
