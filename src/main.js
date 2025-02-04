@@ -12,8 +12,10 @@ app.use(router);
 app.component('font-awesome-icon', FontAwesomeIcon);
 app.mount('#app');
 
+// this allows debugging through console on development environments
 import {Cookie} from "./helpers/cookie";
+import {jwtDecode} from "jwt-decode";
 if (process.env.VUE_APP_ENV === 'development') {
-    // this allows debugging through console on development environments
     window.Cookie = Cookie;
+    window.jwtDecode = jwtDecode;
 }
