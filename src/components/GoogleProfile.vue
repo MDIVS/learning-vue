@@ -1,6 +1,6 @@
 <template>
   <div class="user-profile" v-if="user.email">
-    <img :src="user.picture" alt="Google Profile Image" />
+    <img :src="user.picture" referrerpolicy="no-referrer" alt="Google Profile Image" />
     <p>{{ user.email }}</p>
   </div>
   <div v-else>
@@ -15,8 +15,7 @@
   export default {
     name: "GoogleProfile",
     props: {
-      // The Google JWT (ID token) passed from the parent component after login
-      token: {
+      token: { // The Google JWT (ID token) passed from the parent component after login
         type: String
       },
     },

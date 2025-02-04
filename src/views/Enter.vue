@@ -61,6 +61,8 @@
         //   .catch((err) => {
         //     console.error("Error during authentication:", err);
         //   });
+        
+        window.location.reload();
       },
     },
   };

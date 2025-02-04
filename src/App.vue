@@ -1,7 +1,7 @@
 <template>
   <GoogleProfile :token="googleAuthToken"/>
   <router-view></router-view>
-  <NavBar/>
+  <NavBar :token="googleAuthToken"/>
 </template>
 
 <script>
